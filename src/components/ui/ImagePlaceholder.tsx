@@ -1,64 +1,43 @@
 import React from 'react';
+import { ImageIcon } from 'lucide-react';
 
 interface ImagePlaceholderProps {
+  /** What the client should drop in here, e.g. "Hero — audit dashboard". */
   label: string;
+  /** Recommended dimensions or format note. */
   spec?: string;
+  /** Tailwind aspect / sizing classes. */
   className?: string;
   compact?: boolean;
+  /** Icon only — for tight slots such as avatars, where the label cannot fit. */
   hideLabel?: boolean;
 }
 
+const imageForLabel = (label: string) => {
+  const value = label.toLowerCase();
+  if (value.includes('sample report spread')) return '/report.png';
+  if (value.includes('northline') || value.includes('before / after')) return '/afterbefore.png';
+  if (value.includes('ardent') || value.includes('ga4')) return '/ga4.png';
+  if (value.includes('caldera') || value.includes('google ads')) return '/google-ads.png';
+  if (value.includes('perf') || value.includes('performance')) return '/performance.png';
+  if (value.includes('seo')) return '/seo.png';
+  if (value.includes('ui') || value.includes('ux')) return '/uiux.png';
+  if (value.includes('aeo')) return '/aeo.png';
+  if (value.includes('report excerpt')) return '/reports.png';
+  if (value.includes('headshot')) return '/avatar-placeholder.svg';
+  if (value.includes('client logo 1')) return '/data.png';
+  if (value.includes('client logo 2')) return '/analytics.png';
+  if (value.includes('client logo 3')) return '/ga4.png';
+  if (value.includes('client logo 4')) return '/modern ux.png';
+  if (value.includes('client logo 5')) return '/seo.png';
+  if (value.includes('client logo 6')) return '/google-ads.png';
+  return null;
+};
+
 /**
- * Images are stored in /public/images.
- * Keep these filenames short so Windows/Git can handle the project safely.
+ * Uses the supplied project imagery when an asset matches the slot, while
+ * retaining a graceful fallback for any future client-supplied image.
  */
-function assetFor(label: string) {
-  const l = label.toLowerCase();
-
-  // Homepage hero / sample report
-  if (l.includes('sample report')) return '/images/report.png';
-
-  // Service report images
-  if (l.includes('perf') || l.includes('performance')) return '/images/performance.png';
-  if (l.includes('seo')) return '/images/seo.png';
-  if (l.includes('ui/ux') || l.includes('ui & ux') || l.includes('uiux')) return '/images/uiux.png';
-  if (l.includes('aeo')) return '/images/aeo.png';
-  if (l.includes('ga4')) return '/images/ga4.png';
-  if (l.includes('ads') || l.includes('google')) return '/images/google-ads.png';
-
-  // Proof / case-study images
-  if (l.includes('northline') || l.includes('before / after')) return '/images/afterbefore.png';
-  if (l.includes('ardent')) return '/images/ga4.png';
-  if (l.includes('caldera')) return '/images/google-ads.png';
-  if (l.includes('case study') || l.includes('result screenshot')) return '/images/case-study.png';
-
-  // Testimonial
-  if (l.includes('headshot')) return '/images/avatar.png';
-
-  // Other useful visuals
-  if (l.includes('dashboard')) return '/images/dashbored.png';
-  if (l.includes('analytics')) return '/images/analytics.png';
-  if (l.includes('audit')) return '/images/audit.png';
-  if (l.includes('data')) return '/images/data.png';
-  if (l.includes('report')) return '/images/reports.png';
-
-  // Client-logo placeholders: use existing image assets rather than showing an empty box.
-  const logoMatch = l.match(/client logo ([1-6])/);
-  if (logoMatch) {
-    const logos = [
-      '/images/analytics.png',
-      '/images/performance.png',
-      '/images/seo.png',
-      '/images/uiux.png',
-      '/images/ga4.png',
-      '/images/google-ads.png'
-    ];
-    return logos[Number(logoMatch[1]) - 1];
-  }
-
-  return '/images/report.png';
-}
-
 export function ImagePlaceholder({
   label,
   spec,
@@ -66,37 +45,35 @@ export function ImagePlaceholder({
   compact = false,
   hideLabel = false
 }: ImagePlaceholderProps) {
-  const src = assetFor(label);
+  const src = imageForLabel(label);
 
   return (
     <div
       role="img"
-      aria-label={label}
-      className={`relative overflow-hidden rounded-md border border-line bg-panel ${className}`}
+      aria-label={src ? label : `Image placeholder: ${label}`}
+      className={`hatch relative flex flex-col items-center justify-center gap-1.5 overflow-hidden rounded-md border border-line bg-panel text-center ${compact ? 'p-2' : 'p-4'} ${className}`}
     >
-      <img
-        src={src}
-        alt={label}
-        className="absolute inset-0 h-full w-full object-cover"
-        loading="lazy"
-        onError={(e) => {
-          // If a user replaces an image and temporarily misses a filename,
-          // fall back to the main report visual instead of showing a broken image.
-          const img = e.currentTarget;
-          if (img.src.endsWith('/images/report.png')) return;
-          img.src = '/images/report.png';
-        }}
-      />
-
-      {!hideLabel && compact && (
-        <span className="absolute bottom-2 left-2 rounded bg-ink/85 px-2 py-1 font-mono text-[9px] uppercase tracking-wider text-fg">
-          {label}
-        </span>
+      {src ? (
+        <img
+          src={src}
+          alt={label}
+          className={`absolute inset-0 h-full w-full ${value.includes('client logo') ? 'object-contain p-3' : 'object-cover'}`}
+          loading="lazy"
+        />
+      ) : (
+        <>
+          <ImageIcon className={compact ? 'h-3.5 w-3.5 text-faint' : 'h-5 w-5 text-faint'} aria-hidden="true" />
+          {!hideLabel && (
+            <span className={`font-mono uppercase tracking-wider text-mute ${compact ? 'text-[9px] leading-tight' : 'text-[10px]'}`}>
+              {label}
+            </span>
+          )}
+          {spec && !compact && <span className="font-mono text-[10px] text-faint">{spec}</span>}
+        </>
       )}
-
-      {!hideLabel && !compact && spec && (
-        <span className="absolute bottom-2 right-2 rounded bg-ink/85 px-2 py-1 font-mono text-[9px] text-faint">
-          {spec}
+      {src && !hideLabel && (
+        <span className="absolute bottom-2 left-2 rounded bg-black/65 px-2 py-1 font-mono text-[9px] uppercase tracking-wider text-white backdrop-blur-sm">
+          {label}
         </span>
       )}
     </div>

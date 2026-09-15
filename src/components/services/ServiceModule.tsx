@@ -19,7 +19,7 @@ export function ServiceModule({ service, index }: {service: Service;index: numbe
   }
 
   return (
-    <article id={service.slug} className="scroll-mt-28 border-t border-line py-16 lg:py-20">
+    <article id={service.slug} className={`scroll-mt-28 border-t border-line py-16 lg:py-20 ${index % 2 === 0 ? 'light-section' : 'bg-[#f4f6f7]'}`}>
       <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <div>
           <p className="flex items-center gap-2.5 font-mono text-[11px] text-accent">

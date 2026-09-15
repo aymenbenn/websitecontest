@@ -22,7 +22,7 @@ export function Hero({ variant = 'readout' }: {variant?: HeroVariant;}) {
   });
 
   return (
-    <section className="relative overflow-hidden border-b border-line" aria-labelledby="hero-heading">
+    <section className="light-section relative overflow-hidden border-b border-line" aria-labelledby="hero-heading">
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
       <div
         className={`relative mx-auto max-w-content px-5 pb-20 pt-16 lg:px-8 lg:pb-28 lg:pt-24 ${

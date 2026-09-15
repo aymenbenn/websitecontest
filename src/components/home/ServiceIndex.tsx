@@ -7,7 +7,7 @@ import { ServiceIcon } from '../ui/ServiceIcon';
 
 export function ServiceIndex() {
   return (
-    <section className="border-b border-line bg-panel/40" aria-labelledby="services-heading">
+    <section className="light-section border-b border-line bg-panel/40" aria-labelledby="services-heading">
       <div className="mx-auto max-w-content px-5 py-20 lg:px-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <h2 id="services-heading" className="max-w-lg text-[30px] font-semibold leading-[1.15] tracking-tightest md:text-[38px]">

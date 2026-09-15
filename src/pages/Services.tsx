@@ -16,7 +16,7 @@ export function Services() {
 
   return (
     <>
-      <section className="border-b border-line" aria-labelledby="services-page-heading">
+      <section className="light-section border-b border-line" aria-labelledby="services-page-heading">
         <div className="mx-auto max-w-content px-5 py-16 lg:px-8 lg:py-20">
           <div className="grid gap-10 lg:grid-cols-[1.1fr_auto] lg:items-end">
             <div>
