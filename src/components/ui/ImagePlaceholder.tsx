@@ -57,7 +57,7 @@ export function ImagePlaceholder({
         <img
           src={src}
           alt={label}
-          className={`absolute inset-0 h-full w-full ${value.includes('client logo') ? 'object-contain p-3' : 'object-cover'}`}
+          className={`absolute inset-0 h-full w-full ${label.toLowerCase().includes('client logo') ? 'object-contain p-3' : 'object-cover'}`}
           loading="lazy"
         />
       ) : (
