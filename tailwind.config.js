@@ -1,4 +1,8 @@
 export default {
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     extend: {
       colors: {
@@ -20,10 +24,7 @@ export default {
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       maxWidth: {
-        content: [
-  './index.html',
-  './src/**/*.{js,ts,jsx,tsx}'
-],
+        content: '1200px',
       },
       transitionTimingFunction: {
         swift: 'cubic-bezier(0.23, 1, 0.32, 1)',
