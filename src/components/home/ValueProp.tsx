@@ -21,7 +21,7 @@ const points = [
 
 export function ValueProp() {
   return (
-    <section className="border-b border-line" aria-labelledby="value-heading">
+    <section className="light-section border-b border-[#deded7] bg-[#f5f5f0] text-[#11161b]" aria-labelledby="value-heading">
       <div className="mx-auto max-w-content px-5 py-20 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <h2 id="value-heading" className="max-w-md text-[30px] font-semibold leading-[1.15] tracking-tightest md:text-[38px]">

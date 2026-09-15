@@ -52,7 +52,7 @@ export function Proof() {
         </div>
       </section>
 
-      <section className="border-b border-line bg-panel/40" aria-label="Clients">
+      <section className="light-section border-b border-[#deded7] bg-[#f5f5f0] text-[#11161b]" aria-label="Clients">
         <div className="mx-auto max-w-content px-5 py-12 lg:px-8">
           <p className="font-mono text-[11px] text-faint">Audits delivered for teams at</p>
           <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
@@ -65,7 +65,7 @@ export function Proof() {
         </div>
       </section>
 
-      <section className="border-b border-line" aria-labelledby="cases-heading">
+      <section className="light-section border-b border-[#deded7] bg-white text-[#11161b]" aria-labelledby="cases-heading">
         <div className="mx-auto max-w-content px-5 py-20 lg:px-8">
           <h2 id="cases-heading" className="sr-only">
             Case studies

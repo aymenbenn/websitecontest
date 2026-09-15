@@ -47,3 +47,15 @@ body {
     scroll-behavior: auto;
   }
 }
+
+
+/* Light editorial sections: deliberate contrast against the dark Auditlab shell. */
+.light-section .text-fg { color: #11161b !important; }
+.light-section .text-mute { color: #5f6870 !important; }
+.light-section .text-faint { color: #7a838a !important; }
+.light-section .border-line,
+.light-section .divide-line > :not([hidden]) ~ :not([hidden]) { border-color: #deded7 !important; }
+.light-section .bg-panel { background-color: #f1f1ec !important; }
+.light-section .bg-panel\/40 { background-color: #f1f1ec !important; }
+.light-section .bg-panel\/50 { background-color: #f1f1ec !important; }
+.light-section .hover\:bg-raise\/60:hover { background-color: #f1f1ec !important; }

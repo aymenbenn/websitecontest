@@ -9,7 +9,7 @@ export function ProofStrip() {
   const quote = testimonials[0];
 
   return (
-    <section className="border-b border-line" aria-labelledby="proof-strip-heading">
+    <section className="light-section border-b border-[#deded7] bg-white text-[#11161b]" aria-labelledby="proof-strip-heading">
       <div className="mx-auto max-w-content px-5 py-20 lg:px-8">
         <h2 id="proof-strip-heading" className="sr-only">
           Results and client proof
