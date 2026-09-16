@@ -1,72 +1,37 @@
 /* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Inter:wght@300..600&display=swap');
 
 /* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 /* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
 
-:root {
-  --accent: 0 229 160;
-  --accent-fg: 4 14 11;
-}
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px;
+}
+/* Sticky header clearance for in-page anchors */
+section[id],
+h2[id] {
+  scroll-margin-top: 88px;
 }
 body {
-  background-color: #08090b;
-  color: #e9ecef;
+  background-color: #f6f2ec;
+  color: #15130f;
   -webkit-font-smoothing: antialiased;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 ::selection {
-  background: rgb(var(--accent) / 0.25);
+  background-color: #4a2540;
+  color: #fffdf9;
 }
 *:focus-visible {
-  outline: 2px solid rgb(var(--accent));
-  outline-offset: 2px;
-}
-.hatch {
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.035) 0px,
-    rgba(255, 255, 255, 0.035) 1px,
-    transparent 1px,
-    transparent 7px
-  );
-}
-.grid-lines {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 56px 56px;
+  outline: 2px solid #4a2540;
+  outline-offset: 3px;
 }
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 }
-
-
-/* Light editorial sections: keep the existing dark system intact while
-   giving the site visual breathing room and stronger image contrast. */
-.light-section {
-  background-color: #ffffff !important;
-  color: #0b0d0f !important;
-}
-.light-section .text-fg { color: #0b0d0f !important; }
-.light-section .text-mute { color: #59636d !important; }
-.light-section .text-faint { color: #7a838c !important; }
-.light-section .border-line,
-.light-section .divide-line { border-color: #e2e6e9 !important; }
-.light-section .bg-panel,
-.light-section .bg-panel\/40,
-.light-section .bg-panel\/50,
-.light-section .bg-panel\/90 { background-color: #f5f7f8 !important; }
-.light-section .bg-raise\/60 { background-color: #eef1f3 !important; }
-.light-section .grid-lines {
-  background-image: linear-gradient(to right, rgba(11, 13, 15, 0.055) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(11, 13, 15, 0.055) 1px, transparent 1px);
-}
-.light-section .shadow-black\/40 { --tw-shadow-color: rgba(0,0,0,.10) !important; }

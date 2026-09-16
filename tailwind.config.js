@@ -1,36 +1,41 @@
-export default {
-  content: [
-    './index.html',
-    './src/**/*.{js,ts,jsx,tsx}',
-  ],
+export default {content: [
+  './index.html',
+  './src/**/*.{js,ts,jsx,tsx}'
+],
   theme: {
     extend: {
       colors: {
-        ink: '#08090B',
-        panel: '#0E1217',
-        raise: '#141A20',
-        line: '#212A32',
-        line2: '#2C3742',
-        fg: '#E9ECEF',
-        mute: '#8B949F',
-        faint: '#5C6570',
-        accent: 'rgb(var(--accent) / <alpha-value>)',
-        accentFg: 'rgb(var(--accent-fg) / <alpha-value>)',
-        warn: '#FFB454',
-        bad: '#FF6B6B',
+        canvas: '#F6F2EC',
+        paper: '#FFFDF9',
+        shell: '#EFE8DE',
+        line: '#E0D8CC',
+        ink: '#15130F',
+        'ink-soft': '#463F36',
+        'ink-mute': '#6B6357',
+        plum: {
+          DEFAULT: '#4A2540',
+          soft: '#6B3D5E',
+        },
+        moss: {
+          DEFAULT: '#68765A',
+          soft: '#8B977D',
+        },
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
-      },
-      maxWidth: {
-        content: '1200px',
-      },
-      transitionTimingFunction: {
-        swift: 'cubic-bezier(0.23, 1, 0.32, 1)',
+        serif: ['Newsreader', 'Georgia', 'serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
-        tightest: '-0.045em',
+        tightish: '-0.015em',
+      },
+      maxWidth: {
+        readable: '68ch',
+      },
+      borderRadius: {
+        card: '10px',
+      },
+      transitionTimingFunction: {
+        calm: 'cubic-bezier(0.23, 1, 0.32, 1)',
       },
     },
   },
